@@ -50,5 +50,14 @@ def changedLocationMode(evt) {
 
 def appTouch(evt) {
 	log.debug "appTouch: $evt"
-	switches?.off()
+//	switches?.off()
+    runIn(5, turnOffLights)
+}
+
+
+def turnOffLights()
+{
+    log.debug "Turning: $switches OFF."
+	switches?.off()			// Fails to send real event to real device.
+    log.debug "Done turning: $switches OFF."
 }
